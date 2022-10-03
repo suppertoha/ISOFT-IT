@@ -40,10 +40,10 @@ window.addEventListener('load', function () {
         const inputValue = inputElemtnt.value;
 
         // c помощью метода innerText меняем содержимое текста
-        titleElement.innerText = `Новый текст: ${inputValue}`;
+        titleElement.innerText = `Новый текст: " ${inputValue} " `;
 
         // очищаем поле ввода
-        inputElemtnt.value = '';
+        //inputElemtnt.value = '';
       }
     });
   }
@@ -60,6 +60,7 @@ window.addEventListener('load', function () {
     const prewButton = document.querySelector('.prew');
     const nextButton = document.querySelector('.next');
     const scrollElement = document.querySelector('.slider__scroll-item')
+    const buttonBack = document.querySelector('.slider__back')
 
     // кнопка next
     nextButton.addEventListener('click', function () {
@@ -78,7 +79,7 @@ window.addEventListener('load', function () {
       sliderElement.style.left = -offset + 'px';
 
       // скролл ползунка
-      scrollElement.style.left= offset + 'px';
+      scrollElement.style.left = offset + 'px';
 
     });
 
@@ -95,12 +96,22 @@ window.addEventListener('load', function () {
       sliderElement.style.left = -offset + 'px';
 
         // скролл ползунка всерху
-        scrollElement.style.left= offset + 'px';
+      scrollElement.style.left = offset + 'px';
+    
     });
 
+    // возвращаем слайдер и ползонок в нулевое положение 
+    buttonBack.addEventListener('click', () => {
+      sliderElement.style.left = 0
+      scrollElement.style.left=0
+    })
+
+    // добавляем и удираем класс active
     sliderItemElement.addEventListener('click', function () {
       sliderElement.classList.toggle('active')
     })
+
+  
 
   }
 
