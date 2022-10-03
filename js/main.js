@@ -57,7 +57,6 @@ window.addEventListener('load', function () {
 
     const sliderElement = document.querySelector('.slider__items');
     const sliderItemElement = document.querySelector('#active');
-    const sliderItemElementAll = document.querySelectorAll('.slider__item');
     const prewButton = document.querySelector('.prew');
     const nextButton = document.querySelector('.next');
     const scrollElement = document.querySelector('.slider__scroll-item')
@@ -100,15 +99,8 @@ window.addEventListener('load', function () {
     });
 
     sliderItemElement.addEventListener('click', function () {
-      
-      for (let i = 0; i < sliderItemElementAll.length; i++){
-        sliderItemElementAll.classList.add('active')
-      }
-      console.log(sliderItemElementAll)
-    
+      sliderElement.classList.toggle('active')
     })
-
-  
 
   }
 
