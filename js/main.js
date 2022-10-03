@@ -30,20 +30,28 @@ window.addEventListener('load', function () {
     const inputElemtnt = document.querySelector('.input-text');
 
     // получам в const titleElement тот элемент куда выведем значение которое введет пользователь
-    const titleElement = document.querySelector('.block__title');
+    let titleElement = document.querySelector('.block__title');
 
+    // положим в const массив
+    const textInput=[]
+    
     // вешаем слушатиль события keydown который сработает при нажатии любой клавиши
     inputElemtnt.addEventListener('keydown', (event) => {
       // пишем условие при котором будет отправляться значение value только по клику на enter e нее же код кнопки 13
       if (event.key === 'Enter' || event.keyCode === 13) {
-        // получаем значение value в const
-        const inputValue = inputElemtnt.value;
 
+        // запушим значение value в массив
+        textInput.push(inputElemtnt.value)
+        console.log(textInput)
+
+        // пройдем по массиву циклом и получим каждый элемент массива
+        for (let i = 0; i < textInput.length; i++) {
+          
+          // метод join() вернет строку в которую добавим кавычки и запятую, полжим это в переменную
+          let stringSplit = '"' + textInput.join('","') + '"';
         // c помощью метода innerText меняем содержимое текста
-        titleElement.innerText = `Новый текст: " ${inputValue} " `;
-
-        // очищаем поле ввода
-        //inputElemtnt.value = '';
+          titleElement.innerText = `Новый текст:  ${stringSplit}  `;
+        }
       }
     });
   }
